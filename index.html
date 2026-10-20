@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Christ Edem Brou</title>
+<meta name="description" content="Christ Edem Brou, développeur web à Abidjan. Sites et applications pour le marché ivoirien, pensés pour le téléphone et le paiement par Wave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Concept : une page d'atelier, directe. Un grand panneau vert forêt porte l'identité ; l'orange sert uniquement aux actions. */
+:root{
+  --bg:#F1F5F2; --surface:#FFFFFF; --ink:#0D2820; --muted:#46604F; --line:#D3DFD7;
+  --forest:#0C3B2E; --forest-ink:#EAF4EE; --forest-muted:#A9C7B8; --forest-line:rgba(234,244,238,.16);
+  --emerald:#157A52; --accent:#F26B1D; --accent-ink:#1E0C00; --focus:#157A52;
+  --f-display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#09150F; --surface:#10221A; --ink:#E6F0EA; --muted:#9DB6A8; --line:#223A2E;
+  --forest:#0F4A39; --forest-ink:#EAF4EE; --forest-muted:#B2CFC0; --forest-line:rgba(234,244,238,.18);
+  --emerald:#3FBF8A; --focus:#3FBF8A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#09150F; --surface:#10221A; --ink:#E6F0EA; --muted:#9DB6A8; --line:#223A2E;
+  --forest:#0F4A39; --forest-ink:#EAF4EE; --forest-muted:#B2CFC0; --forest-line:rgba(234,244,238,.18);
+  --emerald:#3FBF8A; --focus:#3FBF8A; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;min-width:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em}
+.label{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+/* Barre du haut */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+.brand{font-family:var(--f-display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none}
+.brand span{color:var(--emerald)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:13px 20px;font:600 1rem/1.1 var(--f-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .12s ease,filter .12s ease}
+.btn:active{transform:scale(.98)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{filter:brightness(1.06)}
+.btn-line{border-color:var(--line);background:var(--surface);color:var(--ink)}
+.btn-line:hover{border-color:var(--emerald)}
+.btn-sm{padding:10px 16px;font-size:.93rem}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:28px;align-items:stretch;padding:28px 0 12px}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;gap:22px;padding:8px 0}
+.hero h1{font-size:clamp(2.3rem,6.2vw,4.4rem)}
+.hero h1 em{font-style:normal;color:var(--emerald)}
+.hero .sub{font-size:1.15rem;color:var(--muted);max-width:46ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.id-card{background:var(--forest);color:var(--forest-ink);border-radius:28px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:320px}
+.id-card .mono{color:var(--forest-muted)}
+.monogram{font-family:var(--f-display);font-weight:800;font-size:clamp(4.5rem,11vw,7.5rem);line-height:.85;letter-spacing:-.05em}
+.monogram i{font-style:normal;color:var(--accent)}
+.id-rows{display:grid;gap:0}
+.id-rows div{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid var(--forest-line);font-size:.95rem}
+.id-rows dt{color:var(--forest-muted)}
+.id-rows dd{margin:0;text-align:right}
+dl{margin:0}
+
+/* Sections */
+section{padding:56px 0 0}
+.sec-head{display:grid;gap:10px;margin-bottom:26px;max-width:62ch}
+.sec-head h2{font-size:clamp(1.8rem,4.2vw,2.8rem)}
+.sec-head p{color:var(--muted)}
+
+/* Projets */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.proj.feature{grid-column:1/-1;background:var(--forest);color:var(--forest-ink);border-color:transparent;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px}
+.proj .tag{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.feature .tag{color:var(--forest-muted)}
+.proj h3{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.proj .desc{color:var(--muted)}
+.feature .desc{color:var(--forest-muted)}
+.facts{list-style:none;margin:0;padding:0;display:grid}
+.facts li{padding:11px 0;border-top:1px solid var(--line);display:flex;gap:12px;justify-content:space-between;align-items:baseline}
+.feature .facts li{border-top-color:var(--forest-line)}
+.facts li span:first-child{color:var(--muted);font-size:.92rem;flex:none}
+.feature .facts li span:first-child{color:var(--forest-muted)}
+.facts li span:last-child{text-align:right;font-weight:500}
+.proj-foot{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;margin-top:auto}
+.stack{font-family:var(--f-mono);font-size:.76rem;color:var(--muted);letter-spacing:.03em}
+.feature .stack{color:var(--forest-muted)}
+.proj-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.proj-side{display:flex;flex-direction:column;gap:18px;min-width:0}
+.price-row{display:flex;gap:10px;flex-wrap:wrap}
+.price{border:1px solid var(--forest-line);border-radius:18px;padding:14px 18px;flex:1 1 150px}
+.price b{display:block;font-family:var(--f-display);font-size:1.9rem;line-height:1;letter-spacing:-.02em}
+.price span{font-size:.88rem;color:var(--forest-muted)}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.svc{padding:22px 0;border-top:1px solid var(--line);display:grid;gap:6px}
+.svc h3{font-size:1.35rem}
+.svc p{color:var(--muted)}
+
+/* Déroulé : une vraie suite d'étapes */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:10px;align-content:start}
+.steps .n{font-family:var(--f-mono);font-size:.8rem;color:var(--emerald);font-weight:500}
+.steps h3{font-size:1.25rem}
+.steps p{color:var(--muted);font-size:.98rem}
+
+/* Contact */
+.contact{background:var(--forest);color:var(--forest-ink);border-radius:30px;padding:clamp(24px,5vw,48px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:center}
+.contact h2{font-size:clamp(2rem,5vw,3.4rem)}
+.contact .sub{color:var(--forest-muted);margin-top:14px;max-width:44ch}
+.reach{display:grid;gap:12px;min-width:0}
+.reach .row{border:1px solid var(--forest-line);border-radius:18px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+.reach .row div{min-width:0}
+.reach small{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--forest-muted)}
+.reach .val{font-family:var(--f-mono);font-size:1rem;overflow-wrap:anywhere;user-select:all}
+.copy{flex:none;border:1px solid var(--forest-line);background:transparent;color:var(--forest-ink);border-radius:12px;padding:8px 12px;font:500 .85rem var(--f-body);cursor:pointer}
+.copy:hover{border-color:var(--forest-ink)}
+.contact .btn-accent{justify-content:center;font-size:1.05rem;padding:16px 22px}
+footer{padding:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .hero,.contact,.proj.feature{grid-template-columns:1fr}
+  .projects,.services,.steps{grid-template-columns:1fr}
+  .id-card{min-height:0}
+  section{padding-top:44px}
+}
+@media (max-width:420px){
+  body{font-size:16px}
+  .top .btn-sm{padding:9px 13px}
+  .proj,.id-card{padding:20px}
+  .facts li{flex-direction:column;gap:2px}
+  .facts li span:last-child{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#haut" id="haut">Christ Edem <span>Brou</span></a>
+    <a class="btn btn-accent btn-sm" href="https://wa.me/2250545177571?text=Bonjour%20Christ%2C%20j%27ai%20vu%20ton%20portfolio.%20J%27aimerais%20discuter%20d%27un%20projet." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="label">Développeur web · Abidjan, Côte d'Ivoire</span>
+        <h1>Je crée des sites et des applications <em>pour le marché ivoirien.</em></h1>
+        <p class="sub">Pensés pour le téléphone, légers pour les connexions de chez nous, avec paiement par Wave quand ton activité en a besoin.</p>
+        <div class="actions">
+          <a class="btn btn-accent" href="https://wa.me/2250545177571?text=Bonjour%20Christ%2C%20j%27ai%20vu%20ton%20portfolio.%20J%27aimerais%20discuter%20d%27un%20projet." target="_blank" rel="noopener">Parler de mon projet</a>
+          <a class="btn btn-line" href="#projets">Voir mes projets</a>
+        </div>
+      </div>
+      <aside class="id-card" aria-label="En bref">
+        <div class="monogram" aria-hidden="true">CE<i>.</i></div>
+        <dl class="id-rows">
+          <div><dt>Base</dt><dd>Abidjan</dd></div>
+          <div><dt>Langues</dt><dd>Français, English</dd></div>
+          <div><dt>Outils</dt><dd class="mono">Next.js · Firebase · Vercel</dd></div>
+          <div><dt>Paiement</dt><dd>Wave</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="projets">
+      <div class="sec-head">
+        <span class="label">Projets en ligne</span>
+        <h2>Ce que j'ai déjà construit</h2>
+        <p>Trois produits réels, pensés pour des utilisateurs d'Afrique de l'Ouest.</p>
+      </div>
+      <div class="projects">
+        <article class="proj feature">
+          <div class="proj-main">
+            <span class="tag">Application web · Éditeur de CV</span>
+            <h3>MON CV PRO CI</h3>
+            <p class="desc">Un éditeur de CV pour les candidats ivoiriens. Le CV se construit gratuitement avec aperçu en direct, le PDF se télécharge après paiement par Wave.</p>
+            <div class="price-row">
+              <div class="price"><b>1 000 F</b><span>le CV en PDF</span></div>
+              <div class="price"><b>1 500 F</b><span>CV + lettre de motivation</span></div>
+            </div>
+            <div class="proj-foot">
+              <a class="btn btn-accent btn-sm" href="https://moncvproci.com" target="_blank" rel="noopener">Ouvrir moncvproci.com ↗</a>
+              <span class="stack">Next.js · TypeScript · Tailwind · Firebase</span>
+            </div>
+          </div>
+          <div class="proj-side">
+            <ul class="facts">
+              <li><span>Modèles</span><span>15 modèles de CV</span></li>
+              <li><span>Score ATS</span><span>Scanner de CV gratuit, sans compte</span></li>
+              <li><span>Installation</span><span>Application installable, préparée pour le Play Store</span></li>
+              <li><span>Connexion</span><span>Google ou e-mail</span></li>
+              <li><span>Langues</span><span>Français et English</span></li>
+              <li><span>Gestion</span><span>Espace admin : paiements, codes promo, avis</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="proj">
+          <span class="tag">Plateforme · Quiz en direct</span>
+          <h3>Quizci</h3>
+          <p class="desc">Un quiz en direct façon Kahoot pour les classes et les événements. Les joueurs répondent depuis leur téléphone, l'animateur projette l'écran.</p>
+          <ul class="facts">
+            <li><span>Rejoindre</span><span>Code PIN, lien WhatsApp ou QR code</span></li>
+            <li><span>Jeu</span><span>Un seul appui par réponse, classement en direct</span></li>
+            <li><span>Capacité</span><span>30 questions, 200 joueurs</span></li>
+            <li><span>Création</span><span>Import des questions par PDF</span></li>
+            <li><span>Tarif</span><span>500 F par quiz, payé par Wave</span></li>
+          </ul>
+          <div class="proj-foot">
+            <a class="btn btn-line btn-sm" href="https://quizci.vercel.app" target="_blank" rel="noopener">Ouvrir Quizci ↗</a>
+            <span class="stack">JavaScript · Firebase</span>
+          </div>
+        </article>
+
+        <article class="proj">
+          <span class="tag">Plateforme · Événements</span>
+          <h3>Escape Game</h3>
+          <p class="desc">Une plateforme d'escape game numérique, conçue pour des événements étudiants : chaque équipe suit son propre parcours d'énigmes, l'organisateur pilote tout depuis un espace dédié.</p>
+          <ul class="facts">
+            <li><span>Énigmes</span><span>Réponse libre, image, pages à code</span></li>
+            <li><span>Suivi</span><span>Classement en direct, écran de projection</span></li>
+            <li><span>Organisateur</span><span>Mode test, export des résultats en CSV</span></li>
+            <li><span>Surprises</span><span>Événements en jeu déclenchés à distance</span></li>
+          </ul>
+          <div class="proj-foot">
+            <span class="stack">Next.js · Firebase</span>
+            <span class="mono" style="color:var(--muted)">Démo sur demande</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="sec-head">
+        <span class="label">Services</span>
+        <h2>Ce que je peux faire pour toi</h2>
+      </div>
+      <div class="services">
+        <div class="svc"><h3>Site web pour ton activité</h3><p>Une page claire qui présente ce que tu vends et qui amène le client à t'écrire sur WhatsApp.</p></div>
+        <div class="svc"><h3>Application web sur mesure</h3><p>Un outil avec comptes utilisateurs, base de données et espace admin, comme mes propres produits.</p></div>
+        <div class="svc"><h3>Paiement par Wave</h3><p>Une façon simple de faire payer tes clients par Wave, avec vérification de ton côté.</p></div>
+        <div class="svc"><h3>Visible sur Google</h3><p>Mise en place de la Search Console, du plan du site et des aperçus de lien pour WhatsApp et les réseaux.</p></div>
+      </div>
+    </section>
+
+    <section id="deroule">
+      <div class="sec-head">
+        <span class="label">Déroulé</span>
+        <h2>Comment on travaille ensemble</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="n">ÉTAPE 1</span><h3>Tu m'expliques ton besoin</h3><p>Un message ou un appel WhatsApp suffit. Tu me dis ce que tu vends et à qui.</p></li>
+        <li><span class="n">ÉTAPE 2</span><h3>Je te propose une solution</h3><p>Je te dis ce que je peux construire, avec un prix clair avant de commencer.</p></li>
+        <li><span class="n">ÉTAPE 3</span><h3>Je construis, tu valides</h3><p>Tu vois le site en ligne pendant qu'il se construit, tu demandes les changements, puis on le publie.</p></li>
+      </ol>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <h2>Parlons de ton projet.</h2>
+          <p class="sub">Écris-moi sur WhatsApp : c'est le plus rapide. Un message qui explique ce que tu veux faire suffit pour commencer.</p>
+        </div>
+        <div class="reach">
+          <a class="btn btn-accent" href="https://wa.me/2250545177571?text=Bonjour%20Christ%2C%20j%27ai%20vu%20ton%20portfolio.%20J%27aimerais%20discuter%20d%27un%20projet." target="_blank" rel="noopener">Ouvrir WhatsApp</a>
+          <div class="row"><div><small>WhatsApp</small><span class="val">+225 05 45 17 75 71</span></div><button class="copy" type="button" data-copy="+2250545177571">Copier</button></div>
+          <div class="row"><div><small>E-mail</small><span class="val">brouchristedem@gmail.com</span></div><button class="copy" type="button" data-copy="brouchristedem@gmail.com">Copier</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Christ Edem Brou · Abidjan, Côte d'Ivoire</span>
+    <a href="#haut">Retour en haut ↑</a>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll(".copy").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var v = b.getAttribute("data-copy"), row = b.parentNode.querySelector(".val");
+    function done() { b.textContent = "Copié"; setTimeout(function () { b.textContent = "Copier"; }, 1600); }
+    function fallback() {
+      try { var r = document.createRange(); r.selectNodeContents(row); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+      b.textContent = "Sélectionné"; setTimeout(function () { b.textContent = "Copier"; }, 1600);
+    }
+    try { navigator.clipboard.writeText(v).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
