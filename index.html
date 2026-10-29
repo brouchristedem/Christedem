@@ -79,6 +79,7 @@ p{margin:0}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
 .id-card{background:var(--forest);color:var(--forest-ink);border-radius:28px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:320px}
 .id-card .mono{color:var(--forest-muted)}
+.portrait{width:clamp(120px,22vw,168px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 0 0 6px var(--forest-line)}
 .monogram{font-family:var(--f-display);font-weight:800;font-size:clamp(4.5rem,11vw,7.5rem);line-height:.85;letter-spacing:-.05em}
 .monogram i{font-style:normal;color:var(--accent)}
 .id-rows{display:grid;gap:0}
@@ -182,7 +183,7 @@ footer{padding:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content
         </div>
       </div>
       <aside class="id-card" aria-label="En bref">
-        <div class="monogram" aria-hidden="true">CE<i>.</i></div>
+        <img class="portrait" src="edem.jpg" width="400" height="400" alt="Christ Edem Brou, développeur web à Abidjan" fetchpriority="high">
         <dl class="id-rows">
           <div><dt>Base</dt><dd>Abidjan</dd></div>
           <div><dt>Langues</dt><dd>Français, English</dd></div>
